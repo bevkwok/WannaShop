@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>WannaShop</title>
+</head>
+<body>
+    <div class="grid-container">
+        <header class="header">
+            <div class="brand">
+                <button onclick="openMenu()">&#9776</button>
+                <a href="index.html">W a n n a S h o p</a>
+            </div>
+            <div class="header-links">
+                <a href="cart.html">cart</a>
+                <a href="signin.html">Sign In</a>
+            </div>
+        </header>
+        <aside class="sidebar">
+            <h4>Shopping Categories</h4>
+            <button class="sidebar-close-button" onclick="closeMenu()">X</button>
+            <ul>
+                <li>
+                    <a href="index.html">Top</a>
+                    <a href="index.html">Bottom</a>
+                    <a href="index.html">Shoes</a>
+
+                </li>
+            </ul>
+        </aside>
+        <main class="main">
+            <div class="content">
+                <ul class="products">
+                    <li>
+                        <div class="product">
+                            <img src="https://lp2.hm.com/hmgoepprod?set=quality[79],source[/78/88/78887b6e153693ac92fcf408189a268c8a035e36.jpg],origin[dam],category[ladies_tops_longsleeve],type[DESCRIPTIVESTILLLIFE],res[m],hmver[1]&call=url[file:/product/fullscreen]" alt="product" class="product-image">
+                            
+                            <div class="product-name">
+                                <a href="product.html">Shirt</a>
+                            </div>
+                            <div class="product-brand">Nike</div>
+                            <div class="product-price">$50</div>
+                            <div class="product-rating">4 Stars (20 Reviews)</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <img src="https://lp2.hm.com/hmgoepprod?set=quality[79],source[/78/88/78887b6e153693ac92fcf408189a268c8a035e36.jpg],origin[dam],category[ladies_tops_longsleeve],type[DESCRIPTIVESTILLLIFE],res[m],hmver[1]&call=url[file:/product/fullscreen]" alt="product" class="product-image">
+                            
+                            <div class="product-name">
+                                <a href="product.html">Shirt</a>
+                            </div>
+                            <div class="product-brand">Nike</div>
+                            <div class="product-price">$50</div>
+                            <div class="product-rating">4 Stars (20 Reviews)</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <footer class="footer">
+            All right reserved.
+        </footer>
+    </div>
+    <script>
+    function openMenu(){
+        document.querySelector('.sidebar').classList.add('open');
+    }
+    function closeMenu(){
+        document.querySelector('.sidebar').classList.remove('open');
+    }
+    </script>
+
+</body>
+</html>
