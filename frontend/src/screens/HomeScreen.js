@@ -23,6 +23,9 @@ function HomeScreen (props) {
         loading? <div>Loading...</div> :
         error? <div>{error}</div> :
         <div>
+            <div className="home_page_image">
+                <h1>WELCOME</h1>
+            </div>
                 <ul className="products">
                     {
                         products.map(product => 

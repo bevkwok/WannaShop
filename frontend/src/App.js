@@ -12,6 +12,8 @@ import ProfileScreen from './screens/ProfileScreen';
 import ShippingScreen from './screens/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import ProductListScreen from './screens/ProductListScreen';
+import ProductEditScreen from './screens/ProductEditScreen';
 
 function App() {
 
@@ -35,15 +37,22 @@ function App() {
               </div>
               <div className="header-links">
                   {
-                    userInfo && userInfo.isAdmin === true ? <Link to="/products">Add Product</Link> : ''
+                    userInfo && userInfo.isAdmin === true ? 
+                    <Link to="/products">Add Product</Link> 
+                    : ''
+                  }
+                  {
+                    userInfo && userInfo.isAdmin === true ? 
+                    <Link to="/productlist">Product List</Link>
+                    : ''
                   }
                   {
                     userInfo ? <Link to={"/cart/" + userInfo._id + "?"}>Cart</Link> : ''
                   }
                   {
                     userInfo ? <Link to="/profile">{userInfo.name}</Link>
-                    : <Link to="/signin">Sign In</Link>
-                  }
+                    : (<Link to="/signin">Sign In</Link>
+                    )}
               </div>
           </header>
           <aside className="sidebar">
@@ -66,10 +75,12 @@ function App() {
                 <Route path="/products" exact={true} component={ProductsScreen} />
                 <Route path="/shipping" exact={true} component={ShippingScreen} />
                 <Route path="/payment" exact={true} component={PaymentScreen} />
-                <Route path="/placeorder" exact={true} component={PlaceOrderScreen} />
-                <Route path="/product/:id" component={ProductScreen} />
+                <Route path="/placeorder" exact={true} component={PlaceOrderScreen}/>
+                <Route path="/product/:id" exact={true} component={ProductScreen} />
+                <Route path="/product/:id/edit" exact={true} component={ProductEditScreen} />
                 <Route path="/cart/:id?" component={CartScreen} />
                 <Route path="/" exact={true} component={HomeScreen} />
+                <Route path="/productlist" component={ProductListScreen}></Route>
               </div>
           </main>
           <footer className="footer">

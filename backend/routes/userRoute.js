@@ -42,7 +42,7 @@ router.put('/:id', isAuth, async (req, res) => {
     } else {
         res.status(404).send({msg: 'User Not Found'});
     }
-})
+});
 
 
 router.post('/register', async (req, res) => {

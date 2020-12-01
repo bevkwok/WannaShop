@@ -45,6 +45,19 @@ button{
   padding: 0.8rem;
 }
 
+.home_page_image{
+  color: white;
+  padding-top: 3vh;
+  height: 30vh;
+  text-align: center;
+  background-image: url("https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1651&q=80");
+  background-size: cover;
+}
+
+.home_page_image h1{
+  font-size: 7vw;
+}
+
 .brand a{
   color: black;
   font-size: 1.5rem;
@@ -134,6 +147,39 @@ a:hover{
 .product-rating{
   margin-bottom: 0.5rem;
   font-size: 0.7rem;
+}
+
+.product_list h1{
+  color: rgb(139, 89, 22);
+  text-align: center;
+}
+
+.product_list_table{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.product_list_table th, td{
+  padding: 0.5vw 2vw;
+}
+
+.product_list_head{
+  background-color: #ebd9c7;
+}
+
+.product_list_body button{
+  font-weight: 600;
+  padding: 0.2vw 0.5vw;
+  margin: 0vw 0.5vw;
+  border-radius: 1px;
+  background-color: transparent;
+  border: 2px solid rgb(139, 89, 22);
+  color:  rgb(139, 89, 22);
+}
+
+.product_list_body button:hover{
+  color: white;
+  background-color: rgb(139, 89, 22);
 }
 
 /* Sidebar */

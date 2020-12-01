@@ -34,15 +34,17 @@ function ProfileScreen(props){
     const userUpdate = useSelector(state => state.userUpdate);
     const { loading, success, error } = userUpdate;
 
-    // const myOrderList = useSelector(state => state.myOrderList);
-    // const { loading: loadingOrders, orders, error: errorOrders} = myOrderList;
+    const myOrderList = useSelector(state => state.myOrderList);
+
+    const { loading: loadingOrders, orders, error: errorOrders} = myOrderList;
+
     useEffect(() => {
         if(userInfo){
             setName(userInfo.name);
             setEmail(userInfo.email);
             setPassword(userInfo.password);
         }
-        // dispatch(listMyOrders())
+        dispatch(listMyOrders());
         return () => {
 
         };
@@ -93,7 +95,7 @@ function ProfileScreen(props){
             </form>
         </div>
             </div>
-            {/* <div className="profile-orders">
+            <div className="profile-orders">
                 {
                     loadingOrders? <div>Loading...</div>:
                     errorOrders? <div>{errorOrders}</div>:
@@ -120,7 +122,7 @@ function ProfileScreen(props){
                         </tbody>
                     </table>
                 }
-            </div> */}
+            </div>
         </div>
     )
 }

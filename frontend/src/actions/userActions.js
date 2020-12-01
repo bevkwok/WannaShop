@@ -21,7 +21,7 @@ const signin = (email, password) => async (dispatch) => {
 const update = ({userId, name, email, password}) => async (dispatch, getState) => {
     const {userSignin: {userInfo}} = getState();
     console.log(userInfo);
-    dispatch({ type: USER_UPDATE_REQUEST, payload: {userId, name, email, password }});
+    dispatch({ type: USER_UPDATE_REQUEST, payload: { userId, name, email, password }});
     try{
         const {data} = await axios.put("/api/users/" + userId, {name, email, password}, {
             headers: {
