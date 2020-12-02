@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
@@ -14,19 +14,26 @@ import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import ProductListScreen from './screens/ProductListScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
+import SearchBox from './components/SearchBox';
+import SearchScreen from './screens/SearchScreen';
+import { listProductCategories } from './actions/productActions';
 
 function App() {
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
-
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const openMenu = () =>{
     document.querySelector('.sidebar').classList.add('open');
-  }
+  };
 
   const closeMenu = () => {
     document.querySelector('.sidebar').classList.remove('open');
-  }
+  };
+
+  const productCategoryList = useSelector((state) => state.productCategoryList);
+    const { loading: loadingCategories, error: errorCategories, categories } = productCategoryList;
+
   return (
     <BrowserRouter>
       <div className="grid-container">
@@ -56,15 +63,36 @@ function App() {
               </div>
           </header>
           <aside className="sidebar">
+            <div>
+              {/* <Route
+                render={({history}) =>  <SearchBox history={history}></SearchBox>}>
+              </Route> */}
+            </div>
               <h4>Shopping Categories</h4>
               <button className="sidebar-close-button" onClick={closeMenu}>X</button>
-              <ul>
-                  <li>
-                      <a href="index.html">Top</a>
-                      <a href="index.html">Bottom</a>
-                      <a href="index.html">Shoes</a>
+              <ul className="categories">
+                <li>
+                  {/* <button onClick={() => setSidebarIsOpen(false)} className="close-sidebar"
+                  type="button"
+                  >
 
-                  </li>
+                  </button> */}
+                </li>
+                {loadingCategories? (<p>Loading...</p>)
+                  :
+                  errorCategories? (<p>{errorCategories}</p>)
+                  :
+                  (
+                    categories.map((c) => (
+                      <li key={c.name}>
+                        <Link to={`/search/category/${c.name}`}
+                        onClick={() => setSidebarIsOpen(false)}
+                        >
+                          {c.name}
+                        </Link>
+                      </li>
+                    ))
+                  )}
               </ul>
           </aside>
           <main className="main">
@@ -81,6 +109,9 @@ function App() {
                 <Route path="/cart/:id?" component={CartScreen} />
                 <Route path="/" exact={true} component={HomeScreen} />
                 <Route path="/productlist" component={ProductListScreen}></Route>
+                <Route path="/search/name/:name?" component={SearchScreen} exact={true}></Route>
+                <Route path="/search/category/:category?" component={SearchScreen} exact={true}></Route>
+
               </div>
           </main>
           <footer className="footer">

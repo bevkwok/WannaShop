@@ -6,7 +6,13 @@ import { isAuth, isAdmin } from '../util';
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-    const products = await Product.find({});
+    const seller = req.query.seller || '';
+    const name = req.query.name || '';
+    const sellerFilter = seller ? { seller } : {};
+    const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
+    const category = req.query.category || '';
+    const categoryFilter = category ? { category } : {};
+    const products = await Product.find({ ...nameFilter, ...categoryFilter });
     res.send(products);
 });
 
@@ -30,6 +36,13 @@ router.post("/", isAuth, isAdmin, async (req, res) => {
         message: 'Error in Creating Product,'
     });
 });
+
+router.get("/categories", async (req, res) => {
+        const categories = await Product.find().distinct('category');
+        res.send(categories);
+    }
+);
+
 
 router.put("/:id", async (req, res) => {
     const productId = req.params.id;
